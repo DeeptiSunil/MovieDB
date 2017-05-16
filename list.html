@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app="ViewApp">
+	<head>
+		<title>Hello AngularJS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    	<script src="js/ViewCtrl.js"></script>
+	</head>
+
+	<body ng-controller="viewCtrl">
+     Genre ID:   <input type="text" name="genre" ng-model="genre" />
+     <button ng-click="viewMovie(genre)">Submit</button>
+     <button ng-click="redirect()">Add Movies</button><br/><br/>
+     Order By: <select ng-model="sortColumn">
+	<option value="title">Name ASC</option>
+	<option value="releaseYear">Year Asc</option>
+	  </select>
+Search : <input type="text" placeholder="Search Movies in List" ng-model="searchText" />
+<br /> <br />	
+  <h3>MovieDB</h3>
+
+<ul ng-repeat="result in results">
+   <ul ng-repeat="res in result.results | orderBy:sortColumn | filter:searchText">
+        <li>Movie Name: {{res.title}}</li>
+        <li>Movie Release Date: {{res.release_date}}</li>
+        <li>Poster Path:  {{res.poster_path}}</li>
+        <li>Vote Rating: {{res.vote_average}}</li>
+        <br/><br/>
+       </ul> <br/><br/>
+</ul>
+
+
+</body>
+</html>

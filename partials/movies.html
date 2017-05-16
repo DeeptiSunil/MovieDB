@@ -1,0 +1,30 @@
+<a ui-sref="newMovie" class="btn-primary btn-lg nodecoration">Add Movie</a>
+<a ng-click="redirect()" class="btn-primary btn-lg nodecoration">Search Movie</a><br/><br/>
+Order By: <select ng-model="sortColumn"><br/><br/>
+	<option value="title">Name ASC</option>
+	<option value="releaseYear">Year Asc</option>
+	  </select>
+Search : <input type="text" placeholder="Search Movies in List" ng-model="searchText" />
+<br /> <br />	
+<table class="table movietable">
+	<tr>
+		<td>
+			<h3>
+				All Movies
+			</h3>
+		</td>
+		<td></td>
+	</tr>
+	<tr ng-repeat="movie in movies | orderBy:sortColumn | filter:searchText">
+		<td>
+			{{movie.title}}
+		</td>
+		<td>
+			{{movie.releaseYear}}
+		</td>
+		<td>
+			<a ui-sref="viewMovie({id:movie._id})" class="btn btn-primary">View</a>
+			<a ng-click="deleteMovie(movie)" class="btn btn-danger">Delete</a>
+		</td>
+	</tr>
+</table>

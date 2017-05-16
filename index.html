@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="ListApp">
+	<head>
+		<title>Hello AngularJS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    	<script src="js/GenreicController.js"></script>
+	</head>
+
+<body ng-controller="ListCtrl">
+<h3>MovieDB</h3>
+<table width="100%" class="table" border="1px">
+ <thead>
+  <tr>
+   <th ng-repeat="(header, value) in results.data.genres[0]">{{header}}</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr ng-repeat="row in results.data.genres">
+   <td ng-repeat="cell in row">{{cell}}</td>
+  </tr>
+ </tbody>
+</table>
+<br /><br/>
+<button ng-click="redirect()">Create Movie List</button>
+<button ng-click="redirectView()" >View Movies</button>
+</body>
+</html>
